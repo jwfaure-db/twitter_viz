@@ -89,7 +89,7 @@ vic_crash_data %>%
              show.legend = FALSE) +
   scale_color_manual(values = c("#C54245", "#00873E", "gray60")) +
   scale_alpha_discrete(range = c(0.7, 0.1, 0.7)) +
-  scale_size_discrete(range = c(0.6, 0.2, 0.6)) +
+  scale_size_discrete(range = c(1, 0.2, 1)) +
   ggtitle("Christmastide road accidents in Victoria", 
           subtitle = "Road accidents between 25-Dec and 5-Jan from 2012 to 2020") +
   labs(caption = "plot by Josh Faure ¦ Source: Victorian Department of Transport",
@@ -109,8 +109,8 @@ vic_crash_data %>%
 
 
 # export plots ------------------------------------------------------------
-ggsave(serious_plot, filename = "plots/serious_accidents.png", width = 30, height = 20, units = "cm")
-ggsave(christmastide_plot, filename = "plots/christmastide.png", width = 30, height = 20, units = "cm")
+ggsave(serious_plot, filename = "plots/serious_accidents.png", height = 7, width = 7, units = "in")
+ggsave(christmastide_plot, filename = "plots/christmastide.png", height = 7, width = 7, units = "in")
 
 
 
