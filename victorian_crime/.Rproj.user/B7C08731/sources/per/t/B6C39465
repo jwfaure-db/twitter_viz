@@ -1,0 +1,28 @@
+{
+    "id": "B6C39465",
+    "path": "~/Documents/ds_projects/twitter_viz/victorian_crime/diff_offences_viz.R",
+    "project_path": "diff_offences_viz.R",
+    "type": "r_source",
+    "hash": "2669310847",
+    "contents": "",
+    "dirty": false,
+    "created": 1609875074791.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "cursorPosition": "80,34",
+        "scrollLine": "47",
+        "Source": "Source",
+        "docOutlineVisible": "0",
+        "source_window_id": ""
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1609881078,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1609881078727,
+    "read_only": false,
+    "read_only_alternatives": []
+}
