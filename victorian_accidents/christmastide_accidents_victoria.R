@@ -27,34 +27,6 @@ vic_crash_data <- vic_crash_data %>%
          accident_time = hms(accident_time))
 
 # plot --------------------------------------------------------------------
-  
-## serious accidents
-vic_crash_data %>% 
-  mutate(major_crash = case_when(
-    fatality > 0 ~ "major",
-    seriousinjury > 0 ~ "major",
-    TRUE ~ "minor"
-  )) %>% 
-  ggplot(aes(longitude, latitude, color = major_crash)) +
-  geom_point(alpha = 0.3, size = 0.3, show.legend = FALSE) +
-  labs(title = "Serious injury road accidents in Victoria",
-       subtitle = "All road accidents involving injury or fatalty from 2012 to 2020",
-       caption = "plot by Josh Faure ¦ Source: Victorian Department of Transport",
-       y = NULL, x = NULL, color = NULL) +
-  scale_color_manual(values = c("orange", "gray80")) +
-  theme_bw() + 
-  theme(legend.position = "none",
-        panel.border = element_rect(color = "transparent"),
-        text = element_text(family = "Verdana", color = "#A8A7A7"),
-        plot.title = element_text(family = "Verdana", face = "bold", size = 14),
-        plot.subtitle = element_markdown(lineheight = 1.2),
-        strip.text = element_text(size = 14, color = "#A8A7A7"),
-        strip.background = element_rect(color = "#474747", fill = "#474747"),
-        plot.background = element_rect(color = "#363636", fill = "#363636"),
-        panel.background = element_rect(color = "transparent", fill = "#474747"),
-        panel.grid = element_blank(),
-        axis.text = element_blank()) -> serious_plot
-
 
 ## christmastide accidents
 #### in the denominations of Western Christianity, the term "Christmas season"
@@ -108,8 +80,8 @@ vic_crash_data %>%
 
 
 
-# export plots ------------------------------------------------------------
-ggsave(serious_plot, filename = "plots/serious_accidents.png", height = 7, width = 7, units = "in")
+# export plot -------------------------------------------------------------
+
 ggsave(christmastide_plot, filename = "plots/christmastide.png", height = 7, width = 7, units = "in")
 
 
