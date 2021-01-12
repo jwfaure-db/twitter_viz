@@ -1,4 +1,0 @@
-library(rvest)
-country_mapping <- read_html("https://www.iban.com/country-codes") %>%  
-  html_nodes(xpath = '/html/body/div[1]/div[2]/div/div/div/div/table') %>% 
-  html_table()
