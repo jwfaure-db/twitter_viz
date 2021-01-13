@@ -1,7 +1,0 @@
-{
-    "installOptions": {
-        "installFromRepository": true,
-        "libraryPath": "/Users/jwfaure/Library/R/4.0/library",
-        "installDependencies": true
-    }
-}

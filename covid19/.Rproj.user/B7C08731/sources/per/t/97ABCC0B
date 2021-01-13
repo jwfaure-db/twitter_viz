@@ -1,27 +1,27 @@
 {
-    "id": "930BFE2B",
-    "path": "~/Documents/ds_projects/twitter_viz/transit_costs/aus_transit_viz.R",
-    "project_path": "aus_transit_viz.R",
+    "id": "97ABCC0B",
+    "path": "~/Documents/ds_projects/twitter_viz/covid19/animated_treemap.R",
+    "project_path": "animated_treemap.R",
     "type": "r_source",
-    "hash": "4166292425",
+    "hash": "802599312",
     "contents": "",
     "dirty": false,
-    "created": 1610329507045.0,
+    "created": 1610338283100.0,
     "source_on_save": false,
     "relative_order": 1,
     "properties": {
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "72,40",
-        "scrollLine": "64"
+        "cursorPosition": "55,0",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1610334888,
+    "lastKnownWriteTime": 1610340231,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1610334888965,
+    "last_content_update": 1610340231444,
     "read_only": false,
     "read_only_alternatives": []
 }
