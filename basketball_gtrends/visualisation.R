@@ -42,9 +42,11 @@ theme_update(
   axis.text.y = element_blank(),
   axis.ticks = element_blank(),
   axis.title.x = element_blank(),
-  axis.title.y = element_text(colour = "#f8c879",
-                              size=10,
-                              angle = 0, vjust = 0.5, hjust = 1)
+  axis.title.y = element_blank(),
+  strip.background = element_rect(fill = "#222222", colour = NA),
+  strip.text.y.left = element_text(colour = "#f8c879",
+                            size=10,
+                            angle = 0, vjust = 0.5, hjust = 1)
 )
 
 
@@ -88,20 +90,12 @@ interest_df <- historic %>%
 
 # plot --------------------------------------------------------------------
 
-plots <- vector(mode = "list")
-
-for(k in unique(interest_df$keyword)){
-  plots[[k]] <- interest_df %>% 
-    filter(keyword == k) %>% 
-    ggplot(aes(x = date, y = hits, colour = hits)) +
-    geom_line(size = 1.2, alpha = 0.6) +
-    scale_colour_gradientn(colours = wes_palette("Zissou1", type = "continuous")) + 
-    scale_y_continuous(name = paste0(k), 
-                       expand = c(0,0))
-}
-
-wrap_plots(grobs = plots, ncol = 1) +
-  plot_annotation(title = "Popularity of franchise basketball players",
+interest_df %>% 
+  ggplot(aes(x = date, y = hits, colour = hits)) +
+  geom_line(size = 1.2, alpha = 0.6) +
+  scale_colour_gradientn(colours = wes_palette("Zissou1", type = "continuous")) + 
+  facet_wrap(~ keyword, ncol = 1, strip.position = "left") +
+  labs(title = "Popularity of franchise basketball players",
        subtitle = "From <span style='color:#3B9AB2'>least searched</span> to <span style='color:#F21A00'>most searched</span>",
        caption = "visualization by Josh Faure  ¦  data: trends.google.com")
 
