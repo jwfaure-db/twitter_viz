@@ -13,26 +13,27 @@
 library(tidyverse)
 library(lubridate)
 library(gtrendsR)
-library(gtable)
+library(patchwork)
 library(ggtext)
+library(wesanderson)
 
 
 # theming -----------------------------------------------------------------
 
-theme_set(theme_bw(base_family = "PT Sans"))
+theme_set(theme_bw(base_family = "Montserrat"))
 
 theme_update(
   legend.position = "none",
-  plot.background = element_rect(fill = "#17263C"),
-  plot.title = element_text(colour = "#C3ECB2", 
-                            size=18, 
+  plot.background = element_rect(fill = "#222222"),
+  plot.title = element_text(colour = "#f8c879", 
+                            size=22, 
                             face="bold",
                             hjust = 0.5),
-  plot.subtitle = element_markdown(colour = "#C3ECB2", 
-                               size=9,
+  plot.subtitle = element_markdown(colour = "#f8c879", 
+                               size=12,
                                hjust = 0.5),
-  plot.caption = element_text(colour = "#C3ECB2", size=9),
-  panel.background = element_rect(fill = "#17263C"),
+  plot.caption = element_text(colour = "#f8c879", size=10),
+  panel.background = element_rect(fill = "#222222"),
   panel.border = element_blank(),
   panel.grid.major = element_blank(), 
   panel.grid.minor = element_blank(),
@@ -41,8 +42,9 @@ theme_update(
   axis.text.y = element_blank(),
   axis.ticks = element_blank(),
   axis.title.x = element_blank(),
-  axis.title.y = element_text(colour = "#C3ECB2",
-                              angle = 90, vjust = 0.5, hjust = 1)
+  axis.title.y = element_text(colour = "#f8c879",
+                              size=10,
+                              angle = 0, vjust = 0.5, hjust = 1)
 )
 
 
@@ -92,25 +94,18 @@ for(k in unique(interest_df$keyword)){
   plots[[k]] <- interest_df %>% 
     filter(keyword == k) %>% 
     ggplot(aes(x = date, y = hits, colour = hits)) +
-    geom_line(size = 1.2, alpha = 0.7) +
-    scale_colour_viridis_c(option = "inferno") + 
+    geom_line(size = 1.2, alpha = 0.6) +
+    scale_colour_gradientn(colours = wes_palette("Zissou1", type = "continuous")) + 
     scale_y_continuous(name = paste0(k), 
                        expand = c(0,0))
 }
 
-gridExtra::grid.arrange(grobs = plots, 
-                        ncol = 1) 
-# + 
-#   labs(title = "Popularity of franchise basketball players", 
-#        subtitle = "From <span style='color:#000004'>least searched</span> to <span style='color:#FCFFA4'>most searched</span>",
-#        caption = "visualization by Josh Faure  ¦  data: trends.google.com",
-#        x = NULL,
-#        y = NULL)
+wrap_plots(grobs = plots, ncol = 1) +
+  plot_annotation(title = "Popularity of franchise basketball players",
+       subtitle = "From <span style='color:#3B9AB2'>least searched</span> to <span style='color:#F21A00'>most searched</span>",
+       caption = "visualization by Josh Faure  ¦  data: trends.google.com")
 
 
 # export plot -------------------------------------------------------------
 
-png("plots/nba_google_trends.png")
-gridExtra::grid.arrange(grobs = plots, 
-                        ncol = 1) 
-dev.off()
+ggsave("plots/nba_google_trends.png", height = 18, width = 12, units = "in")
