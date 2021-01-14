@@ -1,4 +1,4 @@
-
+# code does not work right now due to incompatibility of treemapify and gganimate
 # info --------------------------------------------------------------------
 # 
 # script by Josh Faure
