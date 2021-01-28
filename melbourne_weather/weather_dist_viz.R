@@ -94,7 +94,7 @@ plot <- plot_df %>%
                 height = 5, show.legend = F, 
                 orientation = "horizontal") +
   rcartocolor::scale_color_carto_d(palette = "Magenta") + 
-  stat_halfeye(aes(max_temp, month + 0.12),
+  stat_halfeye(aes(max_temp, month + 0.06),
                 .width = 0, fill = "#C8A2C8", alpha = 0.2, height = 0.7,
                 size = 0.7, point_alpha = 1, point_color = "#590000",
                orientation = "horizontal", na.rm = TRUE) +
