@@ -13,6 +13,7 @@
 library(tidyverse)
 library(nflscrapR)
 library(tidybayes)
+library(cowplot)
 
 
 # theming -----------------------------------------------------------------
@@ -115,15 +116,15 @@ legend_text <-
 legend <- ggplot(data = tibble(x = 0:10, y = rep(1, 11)), aes(x, y)) + 
   stat_interval(.width = c(.1, .25, .5, .75, 1), show.legend = F, 
                 orientation = "horizontal") +
-  rcartocolor::scale_color_carto_d(palette = "Magenta") +
+  rcartocolor::scale_color_carto_d(palette = "Mint") +
   coord_cartesian(ylim = c(0.9, 1.1)) +
   geom_text(data = legend_text, aes(xt, yt, label = text), 
-            family = "Montserrat", color = "grey65", size = 3) +
+            family = "Oswald", color = "grey65", size = 3) +
   theme_void()
 
 ggdraw(plot) +
-  draw_plot(legend, .275, .01, .525, .3)
+  draw_plot(legend, .275, .01, .35, .25)
 
 # export plot -------------------------------------------------------------
 
-ggsave("plots/melb_weather.png", width = 13, height = 8)
+ggsave("plots/nfl_winning_scores.png", width = 13, height = 8)
